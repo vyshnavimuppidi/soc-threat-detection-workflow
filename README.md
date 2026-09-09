@@ -29,6 +29,8 @@ This project delivers an **end-to-end automated SOC triage, investigation, and r
 
 ## 🏗️ Architecture & Pipeline Flow
 
+
+
 ```mermaid
 flowchart TD
     subgraph INGESTION ["1. Telemetry & Ingestion"]

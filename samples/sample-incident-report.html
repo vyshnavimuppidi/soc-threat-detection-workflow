@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOC Incident Analysis & Investigation Report - ALERT-wazuh-alert-87105-001</title>
+  <style>
+    body {
+      background-color: #f1f5f9;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      color: #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+<div style="font-family:'Segoe UI',Arial,sans-serif;max-width:850px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);">
+  <!-- Header -->
+  <div style="background:#dc2626;color:white;padding:20px 24px;border-radius:8px 8px 0 0;">
+    <h1 style="margin:0;font-size:22px;display:flex;align-items:center;gap:8px;">🛡️ SOC Incident Analysis &amp; Investigation Report</h1>
+    <p style="margin:8px 0 0;font-size:13px;opacity:0.95;font-family:monospace;">
+      Alert ID: wazuh-alert-87105-001 | Verdict: True Positive - Confirmed Threat | Threat Score: 96/100
+    </p>
+  </div>
+
+  <!-- Alert Summary -->
+  <div style="padding:20px 24px;background:#f8fafc;border-bottom:1px solid #e2e8f0;">
+    <h3 style="margin-top:0;color:#1e293b;font-size:16px;">📋 Alert Information</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr>
+        <td style="padding:6px;width:180px;color:#64748b;"><b>Rule ID / Description:</b></td>
+        <td style="padding:6px;font-weight:600;color:#0f172a;">[87105] Suspicious outbound communication to known Tor Exit Node / Command and Control (C2) server detected</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;color:#64748b;"><b>Agent / Host:</b></td>
+        <td style="padding:6px;">LAPTOP-P3NHGSR9 (ID: 001) &bull; IP: 192.168.1.105</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;color:#64748b;"><b>Detection Time:</b></td>
+        <td style="padding:6px;">2026-09-10T00:15:00.000Z</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;color:#64748b;"><b>MITRE ATT&CK:</b></td>
+        <td style="padding:6px;">
+          <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:bold;margin-right:4px;">T1071.001</span>
+          <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:bold;margin-right:4px;">T1090</span>
+          <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:bold;">T1573</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- In-Wazuh Enriched IOC Reputation -->
+  <div style="padding:20px 24px;border-bottom:1px solid #e2e8f0;background:#fffbeb;">
+    <h3 style="margin-top:0;color:#92400e;font-size:16px;">🌐 Ingested IOC Reputation &amp; Threat Intelligence (Wazuh Ingested)</h3>
+    <p style="font-size:12px;color:#78350f;margin-top:0;margin-bottom:12px;">
+      These threat intelligence findings were automatically enriched against simulated VirusTotal &amp; AbuseIPDB feeds and ingested into the Wazuh SIEM Index for persistent analyst triage.
+    </p>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;background:white;border-radius:6px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+      <thead>
+        <tr style="background:#f1f5f9;text-align:left;">
+          <th style="padding:10px 12px;border:1px solid #e2e8f0;">IOC</th>
+          <th style="padding:10px 12px;border:1px solid #e2e8f0;">Type</th>
+          <th style="padding:10px 12px;border:1px solid #e2e8f0;">Classification</th>
+          <th style="padding:10px 12px;border:1px solid #e2e8f0;">Threat Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;font-family:monospace;font-weight:bold;color:#b91c1c;">185.220.101.5</td>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;">IP_ADDRESS</td>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;color:#dc2626;"><b>MALICIOUS (High Confidence)</b></td>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;">Known Tor Exit Node &amp; Command and Control (C2) endpoint. 28 abuse reports in last 24h. (Abuse Score: 96%)</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;font-family:monospace;font-weight:bold;color:#b91c1c;">malicious-c2-domain.com</td>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;">DOMAIN</td>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;color:#dc2626;"><b>MALICIOUS</b></td>
+          <td style="padding:10px 12px;border:1px solid #e2e8f0;">Known malware staging and credential harvesting domain. Source: VirusTotal / URLhaus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Analyst Investigation Notes -->
+  <div style="padding:20px 24px;border-bottom:1px solid #e2e8f0;background:#f0fdf4;">
+    <h3 style="margin-top:0;color:#166534;font-size:16px;">🧑‍💻 SOC Analyst Investigation &amp; Triage Notes</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr>
+        <td style="padding:6px;width:180px;color:#15803d;"><b>Investigating Analyst:</b></td>
+        <td style="padding:6px;font-weight:600;color:#166534;">Vyshnavi (Lead SOC Analyst)</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;color:#15803d;"><b>Triage Verdict:</b></td>
+        <td style="padding:6px;">
+          <span style="background:#dc2626;color:white;padding:4px 12px;border-radius:4px;font-size:12px;font-weight:bold;letter-spacing:0.5px;">
+            TRUE POSITIVE - CONFIRMED THREAT
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:6px;color:#15803d;"><b>Analyst Findings:</b></td>
+        <td style="padding:6px;color:#1e293b;">
+          Observed active outbound beaconing to known malicious C2 IP 185.220.101.5 (Abuse confidence: 96%). Process executed from temp directory by SYSTEM account.
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:6px;color:#15803d;"><b>Remediation Taken:</b></td>
+        <td style="padding:6px;font-weight:600;color:#0f172a;">
+          Endpoint LAPTOP-P3NHGSR9 isolated from subnet; IP 185.220.101.5 added to perimeter firewall blocklist; malicious payload beacon_agent.exe quarantined; SYSTEM user token revoked.
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- AI Summary -->
+  <div style="padding:20px 24px;border-bottom:1px solid #e2e8f0;background:#fafafa;">
+    <h3 style="margin-top:0;color:#334155;font-size:16px;display:flex;align-items:center;gap:6px;">
+      🤖 AI Security Synthesis <span style="font-size:11px;background:#e2e8f0;padding:2px 8px;border-radius:12px;color:#475569;font-weight:normal;">Ollama Llama 3.1:8B</span>
+    </h3>
+    <div style="font-size:13px;line-height:1.7;color:#334155;background:#f1f5f9;padding:14px 18px;border-radius:6px;border-left:4px solid #3b82f6;">
+      &bull; <b>Critical Security Risk:</b> High-severity alert (Rule 87105, Level 12) confirmed on endpoint LAPTOP-P3NHGSR9 involving active encrypted beaconing and Command &amp; Control proxy activity.<br/>
+      &bull; <b>Threat Intel Correlation:</b> Remote destination <code>185.220.101.5</code> matched high-confidence Tor exit node and known adversary infrastructure with a 96% threat reputation score.<br/>
+      &bull; <b>Incident Mitigation &amp; Posture:</b> SOC analyst executed host network isolation and IP egress blocking; incident escalated to tier-2 forensics for memory analysis and persistence inspection.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="background:#0f172a;color:#94a3b8;padding:14px 24px;border-radius:0 0 8px 8px;font-size:12px;text-align:center;">
+    Automated SOC Incident Response Pipeline &bull; Approved by Vyshnavi (Lead SOC Analyst) &bull; Delivered via SOC SOAR Webhook
+  </div>
+</div>
+
+</body>
+</html>

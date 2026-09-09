@@ -1,0 +1,43 @@
+{
+  "id": "wazuh-alert-87105-001",
+  "timestamp": "2026-09-10T00:15:00.000Z",
+  "rule": {
+    "id": "87105",
+    "level": 12,
+    "description": "Suspicious outbound communication to known Tor Exit Node / Command and Control (C2) server detected",
+    "groups": ["sysmon", "network_connection", "threat_intel", "mitre_c2"],
+    "mitre": {
+      "id": ["T1071.001", "T1090", "T1573"],
+      "tactic": ["Command and Control"],
+      "technique": ["Web Protocols", "Proxy", "Encrypted Channel"]
+    }
+  },
+  "agent": {
+    "id": "001",
+    "name": "LAPTOP-P3NHGSR9",
+    "ip": "192.168.1.105"
+  },
+  "manager": {
+    "name": "single-node-wazuh.manager-1"
+  },
+  "data": {
+    "srcip": "192.168.1.105",
+    "dstip": "185.220.101.5",
+    "dstport": "443",
+    "protocol": "tcp",
+    "user": "SYSTEM",
+    "file": "C:\\Windows\\Temp\\beacon_agent.exe",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "syscheck": {
+    "path": "C:\\Windows\\Temp\\beacon_agent.exe",
+    "sha256_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "full_log": "Sysmon Event 3: Network connection detected: ProcessId: 4820, Image: C:\\Windows\\Temp\\beacon_agent.exe, User: NT AUTHORITY\\SYSTEM, Protocol: tcp, Initiated: true, SourceIp: 192.168.1.105, SourcePort: 49821, DestinationIp: 185.220.101.5, DestinationPort: 443, DestinationHostname: malicious-c2-domain.com",
+  "analyst_input": {
+    "analyst_name": "Vyshnavi (Lead SOC Analyst)",
+    "verdict": "True Positive - Confirmed Threat",
+    "notes": "Observed active outbound beaconing to known malicious C2 IP 185.220.101.5 (Abuse confidence: 96%). Process executed from temp directory by SYSTEM account.",
+    "remediation": "Endpoint LAPTOP-P3NHGSR9 isolated from subnet; IP 185.220.101.5 added to perimeter firewall blocklist; malicious payload beacon_agent.exe quarantined; SYSTEM user token revoked."
+  }
+}

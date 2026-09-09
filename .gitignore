@@ -1,0 +1,18 @@
+# Environment variables
+.env
+*.env.local
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# n8n Local storage & sqlite DB
+.n8n/
+*.sqlite
+
+# Temporary logs & output
+*.log
+scratch/
+tmp/
+temp/

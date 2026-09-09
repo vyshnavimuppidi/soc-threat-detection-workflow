@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # --------------------------------------------------------------------------
+  # 1. n8n - Security Orchestration, Automation, and Response (SOAR) Engine
+  # --------------------------------------------------------------------------
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: soc-soar-n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=UTC
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - soc-lab-network
+
+  # --------------------------------------------------------------------------
+  # 2. Ollama - Local AI LLM Inference (Zero Data Exfiltration)
+  # --------------------------------------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: soc-ai-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      soc-lab-network:
+        aliases:
+          - ollama
+
+  # --------------------------------------------------------------------------
+  # 3. Mailpit - Local Incident Email Testing & Web UI
+  # --------------------------------------------------------------------------
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: soc-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025" # Web UI for viewing triage reports
+      - "1025:1025" # SMTP port
+    networks:
+      soc-lab-network:
+        aliases:
+          - mailpit
+
+networks:
+  soc-lab-network:
+    name: soc-lab-network
+    driver: bridge
+
+volumes:
+  n8n_data:
+  ollama_data:

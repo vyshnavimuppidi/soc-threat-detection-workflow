@@ -1,3 +1,5 @@
+
+
 # 🛡️ SOC Threat Detection, IOC Enrichment & AI-Assisted Incident Investigation Pipeline
 
 [![SIEM - Wazuh](https://img.shields.io/badge/SIEM-Wazuh%20v4.x-0078D7?style=for-the-badge&logo=wazuh&logoColor=white)](https://wazuh.com/)
@@ -311,6 +313,10 @@ soc-threat-detection-workflow/
 ```
 
 ---
+
+
+https://github.com/user-attachments/assets/f3e72b7e-5bf6-47f6-b82a-5ac68e543135
+
 
 ## 👤 Author & Contact
 
